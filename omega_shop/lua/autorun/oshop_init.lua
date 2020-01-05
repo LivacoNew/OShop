@@ -24,6 +24,8 @@ OShop.Lang = OShop.Lang or {}
 
 AddCSLuaFile("oshop/config/config.lua")
 AddCSLuaFile("oshop/config/lang.lua")
+include("oshop/config/config.lua")
+include("oshop/config/lang.lua")
 if SERVER then
   OShop.Print("Loading serverside...")
 
