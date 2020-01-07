@@ -1,21 +1,23 @@
+-- TODO: This code needs a MAJOR rewrite. The entire addon will probably receive a Version 2 sometime in the future. For now just go with this one...
+
 util.AddNetworkString("oshop_openshop")
 util.AddNetworkString("oshop_message")
 util.AddNetworkString("oshop_requestpurchuse")
 
 
-// Version Check
+-- Version Check
 local RanCheck = false
 hook.Add("PlayerConnect", "oshop_versioncheck", function()
-  if(RanCheck == true) then return end
-  OShop.Print("Running version check!")
-  // Post request.
-  http.Post("https://livacoweb.000webhostapp.com/libaries/versions/oshop.php", {RunningVar = "2.1"}, function(result)
-    OShop.Print(result)
-  end, function(fail)
-    OShop.Print("Error: " .. fail)
-    OShop.Print("This is most likely due to my website being down. Try again later.")
-  end)
-  RanCheck = true
+    if(RanCheck == true) then return end
+    OShop.Print("Running version check!")
+    // Post request.
+    http.Post("https://api.livaco.dev/version_checker.php", {addon = "oshop", version = "2.1.3"}, function(result)
+        OShop.Print(result)
+    end, function(fail)
+        OShop.Print("Error: " .. fail)
+        OShop.Print("This is most likely due to my website being down. Try again later.")
+    end)
+    RanCheck = true
 end)
 
 OShop.Categorys = OShop.Categorys or {}
